@@ -30,7 +30,7 @@ final class FileNameRendererTest extends TestCase
 
     protected function setUp()
     {
-        $this->fileNameRenderer = Bootstrap::getServiceManager()->get('fileconnector.filename_renderer');
+        $this->fileNameRenderer = Bootstrap::getServiceManager()->get('prooph.link.fileconnector.filename_renderer');
     }
 
     /**

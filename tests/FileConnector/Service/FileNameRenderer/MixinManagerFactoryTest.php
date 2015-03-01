@@ -26,9 +26,9 @@ final class MixinManagerFactoryTest extends TestCase
      */
     public function it_creates_a_mixin_manager_by_requesting_it_from_the_service_locator()
     {
-        $mixinManager = Bootstrap::getServiceManager()->get('fileconnector.filename_mixin_manager');
+        $mixinManager = Bootstrap::getServiceManager()->get('prooph.link.fileconnector.filename_mixin_manager');
 
-        $this->assertInstanceOf('FileConnector\Service\FileNameRenderer\MixinManager', $mixinManager);
+        $this->assertInstanceOf('Prooph\Link\FileConnector\Service\FileNameRenderer\MixinManager', $mixinManager);
     }
 }
  

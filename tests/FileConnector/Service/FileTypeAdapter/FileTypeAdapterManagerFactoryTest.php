@@ -26,9 +26,9 @@ final class FileTypeAdapterManagerFactoryTest extends TestCase
      */
     public function it_creates_a_file_type_adapter_manager_from_application_config_when_requesting_it_from_service_locator()
     {
-        $fileTypeAdapters = Bootstrap::getServiceManager()->get('fileconnector.file_type_adapter_manager');
+        $fileTypeAdapters = Bootstrap::getServiceManager()->get('prooph.link.fileconnector.file_type_adapter_manager');
 
-        $this->assertInstanceOf('FileConnector\Service\FileTypeAdapter\FileTypeAdapterManager', $fileTypeAdapters);
+        $this->assertInstanceOf('Prooph\Link\FileConnector\Service\FileTypeAdapter\FileTypeAdapterManager', $fileTypeAdapters);
     }
 }
  

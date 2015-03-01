@@ -24,7 +24,7 @@ final class MixinManagerTest extends TestCase
 
     protected function setUp()
     {
-        $this->mixinManager = Bootstrap::getServiceManager()->get('fileconnector.filename_mixin_manager');
+        $this->mixinManager = Bootstrap::getServiceManager()->get('prooph.link.fileconnector.filename_mixin_manager');
     }
 
     /**
@@ -34,7 +34,7 @@ final class MixinManagerTest extends TestCase
     {
         $mixin = $this->mixinManager->get('now');
 
-        $this->assertInstanceOf('FileConnector\Service\FileNameRenderer\Mixin\NowMixin', $mixin);
+        $this->assertInstanceOf('Prooph\Link\FileConnector\Service\FileNameRenderer\Mixin\NowMixin', $mixin);
     }
 }
  

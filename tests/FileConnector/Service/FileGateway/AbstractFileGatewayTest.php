@@ -29,7 +29,7 @@ final class AbstractFileGatewayTest extends TestCase
     {
         $fileGateway = Bootstrap::getServiceManager()->get('filegateway:::csv-file-reader');
 
-        $this->assertInstanceOf('FileConnector\Service\FileGateway', $fileGateway);
+        $this->assertInstanceOf('Prooph\Link\FileConnector\Service\FileGateway', $fileGateway);
     }
 }
  

@@ -30,7 +30,7 @@ final class FileTypeAdapterManagerTest extends TestCase
 
     protected function setUp()
     {
-        $this->fileTypeAdapters = Bootstrap::getServiceManager()->get('fileconnector.file_type_adapter_manager');
+        $this->fileTypeAdapters = Bootstrap::getServiceManager()->get('prooph.link.fileconnector.file_type_adapter_manager');
     }
 
     /**
@@ -40,7 +40,7 @@ final class FileTypeAdapterManagerTest extends TestCase
     {
         $csvAdapter = $this->fileTypeAdapters->get('csv');
 
-        $this->assertInstanceOf('FileConnector\Service\FileTypeAdapter\LeagueCsvTypeAdapter', $csvAdapter);
+        $this->assertInstanceOf('Prooph\Link\FileConnector\Service\FileTypeAdapter\LeagueCsvTypeAdapter', $csvAdapter);
     }
 
     /**
@@ -50,7 +50,7 @@ final class FileTypeAdapterManagerTest extends TestCase
     {
         $jsonAdapter = $this->fileTypeAdapters->get('json');
 
-        $this->assertInstanceOf('FileConnector\Service\FileTypeAdapter\JsonTypeAdapter', $jsonAdapter);
+        $this->assertInstanceOf('Prooph\Link\FileConnector\Service\FileTypeAdapter\JsonTypeAdapter', $jsonAdapter);
     }
 }
  

@@ -141,13 +141,13 @@ final class FileGatewayTest extends TestCase
 
         $userCollection = $wfMessage->payload()->toType();
 
-        $this->assertInstanceOf('FileConnectorTest\DataType\TestUserCollection', $userCollection);
+        $this->assertInstanceOf('ProophTest\Link\FileConnector\DataType\TestUserCollection', $userCollection);
 
         $this->assertEquals(3, count($userCollection->value()));
         $this->assertEquals(3, $wfMessage->metadata()['total_items']);
 
         foreach ($userCollection->value() as $testUser) {
-            $this->assertInstanceOf('FileConnectorTest\DataType\TestUser', $testUser);
+            $this->assertInstanceOf('ProophTest\Link\FileConnector\DataType\TestUser', $testUser);
         }
     }
 
@@ -183,13 +183,13 @@ final class FileGatewayTest extends TestCase
 
         $userCollection = $wfMessage->payload()->toType();
 
-        $this->assertInstanceOf('FileConnectorTest\DataType\TestUserCollection', $userCollection);
+        $this->assertInstanceOf('ProophTest\Link\FileConnector\DataType\TestUserCollection', $userCollection);
 
         $this->assertEquals(3, count($userCollection->value()));
         $this->assertEquals(3, $wfMessage->metadata()['total_items']);
 
         foreach ($userCollection->value() as $testUser) {
-            $this->assertInstanceOf('FileConnectorTest\DataType\TestUser', $testUser);
+            $this->assertInstanceOf('ProophTest\Link\FileConnector\DataType\TestUser', $testUser);
         }
     }
 
@@ -226,13 +226,13 @@ final class FileGatewayTest extends TestCase
 
         $userCollection = $wfMessage->payload()->toType();
 
-        $this->assertInstanceOf('FileConnectorTest\DataType\TestUserCollection', $userCollection);
+        $this->assertInstanceOf('ProophTest\Link\FileConnector\DataType\TestUserCollection', $userCollection);
 
         $this->assertEquals(2, count($userCollection->value()));
         $this->assertEquals(2, $wfMessage->metadata()['total_items']);
 
         foreach ($userCollection->value() as $testUser) {
-            $this->assertInstanceOf('FileConnectorTest\DataType\TestUser', $testUser);
+            $this->assertInstanceOf('ProophTest\Link\FileConnector\DataType\TestUser', $testUser);
         }
     }
 
@@ -269,7 +269,7 @@ final class FileGatewayTest extends TestCase
 
         $user = $wfMessage->payload()->toType();
 
-        $this->assertInstanceOf('FileConnectorTest\DataType\TestUser', $user);
+        $this->assertInstanceOf('ProophTest\Link\FileConnector\DataType\TestUser', $user);
 
         //The FileGateway should have found both user files. It uses scandir with descending order so
         //testuser_max_mustermann.json should be handled before testuser_john_doe.json.

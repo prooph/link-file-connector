@@ -27,9 +27,9 @@ final class FileNameRendererFactoryTest extends TestCase
      */
     public function it_creates_a_filename_renderer_by_requesting_it_from_service_locator()
     {
-        $renderer = Bootstrap::getServiceManager()->get('fileconnector.filename_renderer');
+        $renderer = Bootstrap::getServiceManager()->get('prooph.link.fileconnector.filename_renderer');
 
-        $this->assertInstanceOf('FileConnector\Service\FileNameRenderer', $renderer);
+        $this->assertInstanceOf('Prooph\Link\FileConnector\Service\FileNameRenderer', $renderer);
     }
 }
  
