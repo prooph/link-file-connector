@@ -1,0 +1,16 @@
+<?php
+return array(
+    'modules' => array(
+        'Prooph\Link\FileConnector',
+        'Prooph\Link\Application'
+    ),
+    'module_listener_options' => array(
+        'config_glob_paths'    => array(
+            'config/test.config.php',
+        ),
+        'module_paths' => array(
+            'module',
+            'vendor',
+        ),
+    ),
+);
