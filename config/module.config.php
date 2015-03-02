@@ -105,13 +105,13 @@ return array(
     'asset_manager' => [
         'resolver_configs' => [
             'riot-tags' => [
-                'js/file-connector/app.js' => [
+                'js/prooph/link/file-connector/app.js' => [
                     'prooph.link.file-connector/file-manager/riot-tag/file-manager',
                     'prooph.link.file-connector/file-manager/riot-tag/connector-list',
                     'prooph.link.file-connector/file-manager/riot-tag/connector-details',
                 ],
                 //Inject process manager metadata configurator for file connectors
-                'js/process-config/app.js' => [
+                'js/prooph/link/process-config/app.js' => [
                     'prooph.link.file-connector/pm/riot-tag/fileconnector-metadata',
                 ],
             ],
