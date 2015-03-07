@@ -37,10 +37,11 @@ final class DashboardWidgetController extends AbstractWidgetController
         }
 
         return DashboardWidget::initialize(
-            'prooph.link.file-connector/dashboard/widget',
-            'File Connector',
-            4,
-            ['processingConfig' => $this->systemConfig, 'fileConnectors' => $connectors]
+            $this->widgetConfig->get('template', 'prooph.link.file-connector/dashboard/widget'),
+            $this->widgetConfig->get('title', 'File Connector'),
+            $this->widgetConfig->get('cols', 4),
+            ['processingConfig' => $this->systemConfig, 'fileConnectors' => $connectors],
+            $this->widgetConfig->get('group_title')
         );
     }
 }
