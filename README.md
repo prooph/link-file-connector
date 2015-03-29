@@ -12,6 +12,22 @@ The module adds a widget to the dashboard which provides access to a file connec
 
 - Import Scope = available as a source
 - Export Scope = available as a target
+ 
+# File Locations
+
+The file connector works only with predefined locations. A default prooph LINK application has two locations defined in the configuration file `<link root>/config/autoload/global.php`:
+
+```php
+return [
+    'locations' => [
+        'inbox'  => __DIR__ . '/../../data/inbox',
+        'outbox' => __DIR__ . '/../../data/outbox',
+    ],
+    //...
+];
+```
+
+By default import files are read from the `inbox` and exports are written to the `outbox`.
 
 # Support
 
