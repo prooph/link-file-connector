@@ -48,18 +48,30 @@
 <script type="text/javascript">
     function (context) {
         var self = this,
-            parent = context.ProcessManager;
+            handlerData = context.handlerData,
+            handlerDeferred = context.handlerDeferred,
+            $modal = context["$modal"];
 
-        this.syncedWithParent = false;
+        $modal.on("hide.bs.modal", function () {
+            //Push back old metadata if deferred is not resolved yet
+            if (! handlerDeferred.promise.isFulfilled()) {
+                handlerDeferred.resolve(handlerData.task_metadata);
+            }
+        });
+
+        $modal.find(".btn-save").click(function () {
+            handlerDeferred.resolve(self.collectMetadata());
+            $modal.modal('hide');
+        });
+
         this.availableLocations = context.app.locations;
         this.tick = function () {};
 
-        this.syncWithProcessManager = function (pm) {
-            this.connector = pm.getCurrentConnector();
-            this.processingType = pm.getCurrentProcessingType();
-            this.taskType = pm.getCurrentTaskType();
-            this.applyMetadata(pm.getMetadata());
-            this.syncedWithParent = true;
+        this.syncWithProcessManager = function () {
+            this.connector = context.app.getConnector(handlerData.processing_id);
+            this.processingType = context.app.getProcessingType(handlerData.task_processing_type);
+            this.taskType = handlerData.task_type;
+            this.applyMetadata(handlerData.task_metadata);
             this.update();
         }
 
@@ -121,24 +133,7 @@
         }
 
         this.on("mount", function () {
-            this.syncWithProcessManager(parent);
+            this.syncWithProcessManager();
         });
-
-        this.on("update", function () {
-            if (this.syncedWithParent) {
-                parent.setMetadata(this.collectMetadata());
-            }
-        });
-
-        function onParentUpdate () {
-            self.syncWithProcessManager(parent);
-        };
-
-        parent.on("update", onParentUpdate);
-
-        this.on("unmount", function () {
-            parent.off("update", onParentUpdate);
-            parent.setMetadata({});
-        })
     }
 </script>
