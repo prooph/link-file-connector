@@ -31,6 +31,7 @@ use ZF\ApiProblem\ApiProblemResponse;
 final class FileConnector extends AbstractRestController implements ActionController, NeedsSystemConfig
 {
     const ICON = 'glyphicon-file';
+    const ICON_TYPE = 'glyphicon';
     const UI_METADATA_RIOT_TAG = 'fileconnector-metadata';
     /**
      * @var CommandBus
@@ -79,6 +80,8 @@ final class FileConnector extends AbstractRestController implements ActionContro
                 'metadata' => $data['metadata'],
                 'ui_metadata_riot_tag' => self::UI_METADATA_RIOT_TAG,
                 'icon' => self::ICON,
+                'icon_type' => self::ICON_TYPE,
+                'node_name' => $this->systemConfig->getNodeName()
             ]
         ));
 
