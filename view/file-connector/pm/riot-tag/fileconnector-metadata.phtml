@@ -68,17 +68,17 @@
         this.tick = function () {};
 
         this.syncWithProcessManager = function () {
-            this.connector = context.app.getConnector(handlerData.processing_id);
-            this.processingType = context.app.getProcessingType(handlerData.task_processing_type);
-            this.taskType = handlerData.task_type;
-            this.applyMetadata(handlerData.task_metadata);
-            this.update();
+            self.connector = context.app.getConnector(handlerData.processing_id);
+            self.processingType = context.app.getProcessingType(handlerData.task_processing_type);
+            self.taskType = handlerData.task_type;
+            self.applyMetadata(handlerData.task_metadata);
+            self.update();
         }
 
         this.isImport = function () {
-             if (this.taskType == '<?php echo \Prooph\Processing\Processor\Definition::TASK_COLLECT_DATA  ?>') {
-                 if (! this.location.value || this.location.value == "outbox") {
-                     this.location.value = 'inbox';
+             if (self.taskType == '<?php echo \Prooph\Processing\Processor\Definition::TASK_COLLECT_DATA  ?>') {
+                 if (! self.location.value || self.location.value == "outbox") {
+                     self.location.value = 'inbox';
                  }
                  return true;
              };
@@ -87,9 +87,9 @@
         }
 
         this.isExport = function () {
-            if  (this.taskType == '<?php echo \Prooph\Processing\Processor\Definition::TASK_PROCESS_DATA  ?>') {
-                if (! this.location.value || this.location.value == "inbox") {
-                    this.location.value = 'outbox';
+            if  (self.taskType == '<?php echo \Prooph\Processing\Processor\Definition::TASK_PROCESS_DATA  ?>') {
+                if (! self.location.value || self.location.value == "inbox") {
+                    self.location.value = 'outbox';
                 }
                 return true;
             }
@@ -101,39 +101,39 @@
             if (! metadata) return;
 
             if (metadata.location) {
-                this.location.value = metadata.location;
+                self.location.value = metadata.location;
             }
 
             if (metadata.filename_pattern) {
-                this.filename_pattern.value = metadata.filename_pattern;
+                self.filename_pattern.value = metadata.filename_pattern;
             }
 
             if (metadata.filename_template) {
-                this.filename_template.value = metadata.filename_template;
+                self.filename_template.value = metadata.filename_template;
             }
         }
 
         this.collectMetadata = function () {
             var tmpMetadata = {};
-            if (this.connector.metadata && this.connector.metadata.file_type) {
-                tmpMetadata.file_type = this.connector.metadata.file_type;
+            if (self.connector.metadata && self.connector.metadata.file_type) {
+                tmpMetadata.file_type = self.connector.metadata.file_type;
             }
 
-            if (this.isImport()) {
-                tmpMetadata.filename_pattern = this.filename_pattern.value;
+            if (self.isImport()) {
+                tmpMetadata.filename_pattern = self.filename_pattern.value;
             }
 
-            if (this.isExport()) {
-                tmpMetadata.filename_template = this.filename_template.value;
+            if (self.isExport()) {
+                tmpMetadata.filename_template = self.filename_template.value;
             }
 
-            tmpMetadata.location = this.location.value;
+            tmpMetadata.location = self.location.value;
 
             return tmpMetadata;
         }
 
         this.on("mount", function () {
-            this.syncWithProcessManager();
+            self.syncWithProcessManager();
         });
     }
 </script>
